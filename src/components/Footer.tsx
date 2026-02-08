@@ -129,8 +129,7 @@ export default function Footer() {
                     <MapPin className="h-4 w-4 text-[#D4A34A]" />
                   </div>
                   <div className="text-sm font-medium">
-                    <p>Jl. Industri Raya No. 123</p>
-                    <p>Jakarta, Indonesia 12345</p>
+                    <p>Taman Pulo Indah Blok T1/23A, Penggilingan, Cakung, Jakarta Timur, Desa/Kelurahan Penggilingan,Kec. Cakung, Kota Adm. Jakarta Timur, Provinsi DKI Jakarta, Indonesia</p>
                   </div>
                 </div>
               </div>
@@ -162,7 +161,7 @@ export default function Footer() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <p className="text-gray-500 text-sm font-medium text-center sm:text-left">
-                &copy; {currentYear} <span className="text-[#D4A34A] font-black">BUMI CHARCOAL</span>. All rights reserved. | Premium Manufacturer & Exporter
+                &copy; {currentYear} <span className="text-[#D4A34A] font-black">PT Bumi Perkasa Nanjaya</span>. All rights reserved. | Premium Manufacturer & Exporter
               </p>
               <div className="flex gap-6 text-xs text-gray-500 font-medium">
                 <a href="#" className="hover:text-[#D4A34A] transition-colors duration-300">Privacy</a>

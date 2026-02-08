@@ -11,20 +11,59 @@ const partners = [
   { name: 'SITC', region: 'Asia-Europe' }
 ];
 
+// 1. Update data dengan ISO Code untuk memanggil SVG Flag yang lebih tajam
 const countries = [
-  { name: 'UAE', flag: '🇦🇪' },
-  { name: 'Saudi Arabia', flag: '🇸🇦' },
-  { name: 'Qatar', flag: '🇶🇦' },
-  { name: 'Egypt', flag: '🇪🇬' },
-  { name: 'Turkey', flag: '🇹🇷' },
-  { name: 'India', flag: '🇮🇳' },
-  { name: 'Singapore', flag: '🇸🇬' },
-  { name: 'Malaysia', flag: '🇲🇾' },
-  { name: 'China', flag: '🇨🇳' },
-  { name: 'Japan', flag: '🇯🇵' },
-  { name: 'South Korea', flag: '🇰🇷' }
+  { name: 'UAE', code: 'ae', region: 'Middle East' },
+  { name: 'Saudi Arabia', code: 'sa', region: 'Middle East' },
+  { name: 'Qatar', code: 'qa', region: 'Middle East' },
+  { name: 'Egypt', code: 'eg', region: 'North Africa' },
+  { name: 'Turkey', code: 'tr', region: 'Eurasia' },
+  { name: 'India', code: 'in', region: 'South Asia' },
+  { name: 'Singapore', code: 'sg', region: 'Southeast Asia' },
+  { name: 'Malaysia', code: 'my', region: 'Southeast Asia' },
+  { name: 'China', code: 'cn', region: 'East Asia' },
+  { name: 'Japan', code: 'jp', region: 'East Asia' },
+  { name: 'South Korea', code: 'kr', region: 'East Asia' }
 ];
 
+// 2. Component Grid yang lebih "Tinggi" & Premium
+<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+  {countries.map((country, idx) => (
+    <div
+      key={idx}
+      className="group relative flex flex-col items-center justify-between p-8 bg-zinc-900/40 border border-zinc-800 rounded-2xl hover:border-amber-500/50 hover:bg-zinc-800/40 transition-all duration-500 cursor-default overflow-hidden"
+    >
+      {/* Background Glow Effect */}
+      <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-amber-500/5 blur-[50px] group-hover:bg-amber-500/10 transition-all duration-500" />
+
+      {/* Flag Container - Ditinggikan dengan aspek rasio yang pas */}
+      <div className="mb-6 relative">
+        <div className="w-16 h-12 overflow-hidden rounded shadow-lg border border-zinc-700/50 group-hover:scale-110 group-hover:rotate-2 transition-transform duration-500">
+          <img 
+            src={`https://flagcdn.com/${country.code}.svg`} 
+            alt={country.name}
+            className="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all"
+          />
+        </div>
+        {/* Status Indicator */}
+        <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 border-2 border-zinc-900 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+      </div>
+
+      {/* Text Info */}
+      <div className="text-center">
+        <h4 className="text-white font-bold text-sm tracking-[0.1em] uppercase mb-1 group-hover:text-amber-500 transition-colors">
+          {country.name}
+        </h4>
+        <p className="text-[10px] text-zinc-500 font-medium uppercase tracking-widest">
+          {country.region}
+        </p>
+      </div>
+
+      {/* Hover Line Decoration */}
+      <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500 to-transparent group-hover:w-full transition-all duration-700" />
+    </div>
+  ))}
+</div>
 export default function ShippingPartners() {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredPartner, setHoveredPartner] = useState<number | null>(null);
@@ -112,16 +151,16 @@ export default function ShippingPartners() {
                   Global Reach <span className="text-[#D4A34A] group-hover:text-white transition-colors duration-300">20+ Countries</span>
                 </h3>
                 <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto">
-                  From Asia to Europe, Middle East to Africa—our world-class logistics network ensures your orders arrive fresh, on time, and in perfect condition.
+                  From Asia to Europe, Middle East to Africa, our world-class logistics network ensures your orders arrive fresh, on time, and in perfect condition.
                 </p>
               </div>
 
               {/* Stats Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 py-12 border-y border-white/10">
                 {[
-                  { icon: Globe, label: 'Countries', value: '20+' },
-                  { icon: Ship, label: 'Partners', value: '7' },
-                  { icon: TrendingUp, label: 'Annual Shipments', value: '1000+' }
+                  { icon: Globe, label: 'Worldwide Export Ready', value: '20+' },
+                  { icon: Ship, label: 'Integrated Production Hub', value: '7' },
+                  { icon: TrendingUp, label: 'Monthly Production Capacity', value: '1000+' }
                 ].map((stat, idx) => {
                   const Icon = stat.icon;
                   return (
