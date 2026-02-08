@@ -129,7 +129,7 @@ export default function Footer() {
                     <MapPin className="h-4 w-4 text-[#D4A34A]" />
                   </div>
                   <div className="text-sm font-medium">
-                    <p>Taman Pulo Indah Blok T1/23A, Penggilingan, Cakung, Jakarta Timur, Desa/Kelurahan Penggilingan,Kec. Cakung, Kota Adm. Jakarta Timur, Provinsi DKI Jakarta, Indonesia</p>
+                    <p>Taman Pulo Indah Blok T1/23A, Penggilingan, Cakung, Jakarta Timur, DKI Jakarta, Indonesia. 13940.</p>
                   </div>
                 </div>
               </div>
