@@ -26,7 +26,7 @@ export default function Footer() {
 
   const socialLinks = [
     { icon: Facebook, label: 'Facebook', href: '#', color: 'hover:text-blue-400' },
-    { icon: Instagram, label: 'Instagram', href: '#', color: 'hover:text-pink-400' },
+    { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/bumicharcoalofficial', color: 'hover:text-pink-400' },
     { icon: Linkedin, label: 'LinkedIn', href: '#', color: 'hover:text-blue-500' },
     { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/6285921783137', color: 'hover:text-green-400' }
   ];
