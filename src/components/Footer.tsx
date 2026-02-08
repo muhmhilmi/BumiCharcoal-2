@@ -116,13 +116,13 @@ export default function Footer() {
                   <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-[#D4A34A]/20 flex items-center justify-center group-hover:bg-[#D4A34A]/30 transition-colors duration-300">
                     <Phone className="h-4 w-4 text-[#D4A34A]" />
                   </div>
-                  <span className="text-sm font-medium">+62 812-3456-7890</span>
+                  <span className="text-sm font-medium">+62 859-2178-3137</span>
                 </a>
                 <a href="mailto:info@bumicharcoal.com" className="flex items-center gap-3 text-gray-400 hover:text-[#D4A34A] transition-colors duration-300 group">
                   <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-[#D4A34A]/20 flex items-center justify-center group-hover:bg-[#D4A34A]/30 transition-colors duration-300">
                     <Mail className="h-4 w-4 text-[#D4A34A]" />
                   </div>
-                  <span className="text-sm font-medium">info@bumicharcoal.com</span>
+                  <span className="text-sm font-medium">bumicharcoal.official@gmail.com</span>
                 </a>
                 <div className="flex items-start gap-3 text-gray-400">
                   <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-[#D4A34A]/20 flex items-center justify-center mt-0.5">
