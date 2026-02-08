@@ -28,7 +28,7 @@ export default function Footer() {
     { icon: Facebook, label: 'Facebook', href: '#', color: 'hover:text-blue-400' },
     { icon: Instagram, label: 'Instagram', href: '#', color: 'hover:text-pink-400' },
     { icon: Linkedin, label: 'LinkedIn', href: '#', color: 'hover:text-blue-500' },
-    { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/6281234567890', color: 'hover:text-green-400' }
+    { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/6285921783137', color: 'hover:text-green-400' }
   ];
 
   return (
@@ -175,7 +175,7 @@ export default function Footer() {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/6281234567890"
+        href="https://wa.me/6285921783137"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-8 right-8 group z-50"

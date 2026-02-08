@@ -50,7 +50,7 @@ export default function Contact() {
           from_email: formData.email,
           company: formData.company,
           message: formData.message,
-          to_email: "your-email@example.com" // Ganti dengan email Anda
+          to_email: "bumicharcoal.official@gmail.com" // Ganti dengan email Anda
         }
       );
 
