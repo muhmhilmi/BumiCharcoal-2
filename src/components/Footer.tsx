@@ -18,9 +18,9 @@ export default function Footer() {
     ],
     support: [
       { label: 'Shipping Info', href: '#shipping' },
-      { label: 'Quality Assurance', href: '#' },
-      { label: 'FAQ', href: '#' },
-      { label: 'Privacy Policy', href: '#' }
+      { label: 'Quality Assurance', href: '#contact' },
+      { label: 'FAQ', href: 'https://wa.me/6285921783137' },
+      { label: 'Privacy Policy', href: '#company' }
     ]
   };
 
