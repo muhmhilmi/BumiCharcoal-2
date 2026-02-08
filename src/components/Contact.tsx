@@ -22,19 +22,19 @@ export default function Contact() {
     {
       icon: Phone,
       title: 'Phone',
-      items: ['+62 812-3456-7890', '+62 821-9876-5432'],
+      items: ['+62 859-2178-3137', '+62 895-4103-42937'],
       color: 'from-blue-500/30'
     },
     {
       icon: Mail,
       title: 'Email',
-      items: ['info@bumicharcoal.com', 'sales@bumicharcoal.com'],
+      items: ['bumicharcoal.official@gmail.com', 'bumiperkasananjaya@gmail.com'],
       color: 'from-purple-500/30'
     },
     {
       icon: MapPin,
       title: 'Location',
-      items: ['Jl. Industri Raya No. 123', 'Jakarta, Indonesia 12345'],
+      items: ['Taman Pulo Indah Blok T1/23A, Penggilingan, Cakung, Jakarta Timur, Desa/Kelurahan Penggilingan, Kec. Cakung, Kota Adm. Jakarta Timur, Provinsi DKI Jakarta, Indonesia. 13940.'],
       color: 'from-pink-500/30'
     }
   ];
@@ -131,7 +131,7 @@ export default function Contact() {
               }`}
               style={{ transitionDelay: '300ms' }}>
                 <a
-                  href="https://wa.me/6281234567890"
+                  href="https://wa.me/6285921783137"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative block group bg-gradient-to-r from-[#25D366] via-[#128C7E] to-[#20BA5A] rounded-2xl p-8 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-[#25D366]/40"
