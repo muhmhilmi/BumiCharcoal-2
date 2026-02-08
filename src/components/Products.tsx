@@ -81,7 +81,7 @@ export default function Products() {
       category: 'Grade AA+ Premium',
       name: 'Platinum Shisha',
       tagline: 'Pure Excellence for Premium Markets',
-      image: 'https://images.pexels.com/photos/1038713/pexels-photo-1038713.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://baracoco.com/wp-content/uploads/2022/11/mcbrikett-kokoko-coconut-charcoal-cubes-2kg-11859-p.jpg',
       abstract: 'Engineered for high-end shisha markets. 100% aged coconut shells ensure odorless, smokeless experience that preserves flavor integrity.',
       valuePropositions: [
         'Heat Consistency', 'Minimal Ash', 'Zero Sulfur', 'Compression Strength'
@@ -112,7 +112,7 @@ export default function Products() {
       category: 'Industrial Grade',
       name: 'Hexagonal BBQ',
       tagline: 'Maximum Heat for Professional Grilling',
-      image: 'https://images.pexels.com/photos/1766686/pexels-photo-1766686.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: 'https://img.lazcdn.com/g/p/0a80be1da5a484da6287d53232e28e83.jpg_720x720q80.jpg',
       abstract: 'Designed for commercial kitchens. Superior heat retention and steady burning profile for heavy-duty professional grilling demands.',
       valuePropositions: [
         'Heat Density', 'Temperature Control', 'Low Impurities', 'Sustainable'

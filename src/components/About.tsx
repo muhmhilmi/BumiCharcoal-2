@@ -48,7 +48,7 @@ export default function About() {
             About <span className="text-transparent bg-gradient-to-r from-[#D4A34A] to-[#f3d382] bg-clip-text animate-shine">Bumi Charcoal</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-            Pioneering premium charcoal solutions with unwavering commitment to quality, sustainability, and global excellence
+            Work closely with local suppliers and processing partners to ensure quality control, stable supply, and transparent specifications for every order
           </p>
         </div>
 
@@ -62,11 +62,15 @@ export default function About() {
               </h3>
 
               <p className="text-gray-300 text-lg mb-6 leading-relaxed font-medium">
-                PT Bumi Perkasa Nan Jaya stands as a beacon of excellence in the charcoal industry. With years of dedicated expertise, we've developed a reputation for delivering premium quality products that exceed international standards.
+                We are an Indonesia-based company specializing in coconut shell charcoal for export markets. Our focus is delivering consistent quality charcoal sourced from selected coconut shell producers and prepared according to international trade standards.
               </p>
 
               <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-                Our commitment to sustainability and innovation ensures that every product bearing the Bumi Charcoal name represents uncompromising quality and environmental responsibility.
+                We understand that international buyers value clarity, reliability, and long-term cooperation. For that reason, we emphasize clear product specifications, export-ready packaging, and structured communication throughout the inquiry and order process.
+              </p>
+
+              <p className="text-gray-300 text-lg mb-6 leading-relaxed font-medium">
+                Currently, we handle inquiries from overseas buyers and are focused on building long-term partnerships in global markets. We are committed to growing together with our partners by continuously improving product quality, operational efficiency, and customer service.
               </p>
 
               {/* Feature List */}
