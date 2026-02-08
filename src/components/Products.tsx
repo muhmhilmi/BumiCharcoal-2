@@ -89,7 +89,7 @@ export default function Products() {
       sectors: ['Luxury Lounges', 'Premium Retail', 'Global Distribution'],
       metrics: [
         { label: 'Fixed Carbon', value: '> 85%', description: 'Maximum efficiency', icon: Zap },
-        { label: 'Ash Content', value: '< 2.2%', description: 'Pure white residue', icon: Wind },
+        { label: 'Ash Content', value: '< 3%', description: 'Pure white residue', icon: Wind },
         { label: 'Moisture', value: '< 5%', description: 'Optimal ignition', icon: Droplets },
         { label: 'Duration', value: '120 min', description: 'Extended sessions', icon: Clock }
       ],
@@ -102,7 +102,7 @@ export default function Products() {
       ],
       comparison: [
         { feature: 'Carbon Content', shisha: '> 85%', bbq: '> 80%' },
-        { feature: 'Ash Production', shisha: '< 2.2%', bbq: '< 4.5%' },
+        { feature: 'Ash Production', shisha: '< 3%', bbq: '< 4.5%' },
         { feature: 'Duration', shisha: '120 min', bbq: '180 min' },
         { feature: 'Temperature', shisha: '200-300°C', bbq: '400-600°C' }
       ]
@@ -133,7 +133,7 @@ export default function Products() {
       ],
       comparison: [
         { feature: 'Carbon Content', shisha: '> 85%', bbq: '> 80%' },
-        { feature: 'Ash Production', shisha: '< 2.2%', bbq: '< 4.5%' },
+        { feature: 'Ash Production', shisha: '< 3%', bbq: '< 4.5%' },
         { feature: 'Duration', shisha: '120 min', bbq: '180 min' },
         { feature: 'Temperature', shisha: '200-300°C', bbq: '400-600°C' }
       ]
