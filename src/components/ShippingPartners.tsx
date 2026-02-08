@@ -190,8 +190,8 @@ export default function ShippingPartners() {
                       style={{ transitionDelay: `${400 + idx * 30}ms` }}
                     >
                       <div className="relative bg-gradient-to-br from-white/[0.06] to-white/[0.02] border border-white/10 rounded-xl p-4 text-center hover:border-[#D4A34A]/40 hover:bg-white/[0.1] transition-all duration-300 hover:scale-110 overflow-hidden cursor-pointer">
-                        <p className="text-2xl mb-2 group-hover/country:scale-125 transition-transform duration-300">{country.flag}</p>
-                        <p className="text-xs font-bold text-gray-400 group-hover/country:text-[#D4A34A] transition-colors duration-300 uppercase tracking-wider">
+                        <p className="text-2xl mb-2 group-hover/country:scale-125 transition-transform duration-300">{country.code.toUpperCase()}</p>
+                          <p className="text-xs font-bold text-gray-400 group-hover/country:text-[#D4A34A] transition-colors duration-300 uppercase tracking-wider">
                           {country.name}
                         </p>
                       </div>

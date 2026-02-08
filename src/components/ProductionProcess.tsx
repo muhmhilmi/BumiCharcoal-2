@@ -6,42 +6,42 @@ const processSteps = [
     icon: Flame,
     title: 'Material Selection',
     description: 'Premium coconut shells & hardwood from sustainable sources. Rigorous batch inspection ensures excellence.',
-    image: 'https://images.pexels.com/photos/3962286/pexels-photo-3962286.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://fasmpo.com/image/catalog/v%E1%BB%8F%20d%E1%BB%ABa%20kh%C3%B4/Ung-dung-cua-vo-dua-kho-trong-doi-song.jpg',
     color: 'from-orange-500/20'
   },
   {
     icon: Zap,
     title: 'Carbonization',
     description: 'Specialized kilns at controlled temperatures. Process removes moisture & volatiles for premium quality.',
-    image: 'https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://tokomesinkelapa.com/wp-content/uploads/2025/07/briket-arang.jpeg',
     color: 'from-yellow-500/20'
   },
   {
     icon: Wind,
     title: 'Cooling & Screening',
     description: 'Gradual cooling preserves quality. Screens ensure uniform size and remove all impurities.',
-    image: 'https://images.pexels.com/photos/5632400/pexels-photo-5632400.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://id-test-11.slatic.net/p/1c61ddad46723dbdbe18e7f0e591d72b.jpg',
     color: 'from-blue-500/20'
   },
   {
     icon: Droplet,
     title: 'Quality Testing',
-    description: 'Tested for ash content, moisture, and burning performance. ISO 9001 certified standards.',
-    image: 'https://images.pexels.com/photos/3938035/pexels-photo-3938035.jpeg?auto=compress&cs=tinysrgb&w=800',
+    description: 'Tested for ash content, moisture, and burning performance.',
+    image: 'https://static.wixstatic.com/media/nsplsh_7854646f486f5846684e73~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/nsplsh_7854646f486f5846684e73~mv2_d_6000_4000_s_4_2.jpg',
     color: 'from-cyan-500/20'
   },
   {
     icon: Package,
     title: 'Packaging',
     description: 'Moisture-proof bags with multiple size options. Premium protection for every shipment.',
-    image: 'https://images.pexels.com/photos/3962335/pexels-photo-3962335.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://jasaforwarderekspor.com/mymedia/2024/01/Cargo-Groupage-1.webp',
     color: 'from-purple-500/20'
   },
   {
     icon: CheckCircle,
     title: 'Global Distribution',
     description: 'Optimal storage conditions and trusted logistics partners. Shipping to 50+ countries worldwide.',
-    image: 'https://images.pexels.com/photos/3962282/pexels-photo-3962282.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://d9qdiq7a7hdin.cloudfront.net/public/hub/post_image/shipping-process-artinya-arahin.id.jpg',
     color: 'from-green-500/20'
   }
 ];
