@@ -1,13 +1,24 @@
 import { Mail, Phone, MapPin, MessageCircle, ArrowRight, Zap, Send } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const [isVisible, setIsVisible] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [hoveredContact, setHoveredContact] = useState<number | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
 
   useEffect(() => {
+    // Initialize EmailJS
+    emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
+    
     setIsVisible(true);
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -17,6 +28,49 @@ export default function Contact() {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await emailjs.send(
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          company: formData.company,
+          message: formData.message,
+          to_email: "your-email@example.com" // Ganti dengan email Anda
+        }
+      );
+
+      if (response.status === 200) {
+        alert('✅ Pesan berhasil dikirim! Terima kasih telah menghubungi kami.');
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          message: ''
+        });
+      }
+    } catch (error) {
+      console.error('Email error:', error);
+      alert('❌ Gagal mengirim pesan. Silakan coba lagi.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const contactInfo = [
     {
@@ -154,7 +208,7 @@ export default function Contact() {
             <div className="relative group bg-gradient-to-b from-white/[0.08] to-white/[0.02] backdrop-blur-xl border border-white/10 rounded-2xl p-10 transition-all duration-500 hover:border-[#D4A34A]/30 hover:shadow-xl hover:shadow-[#D4A34A]/10 h-full">
               <h3 className="text-3xl font-black text-white mb-8 relative z-10">Send us a message</h3>
               
-              <form className="space-y-6 relative z-10">
+              <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                 {[
                   { label: 'Full Name', type: 'text', placeholder: 'Your name', name: 'name' },
                   { label: 'Email Address', type: 'email', placeholder: 'your@email.com', name: 'email' },
@@ -165,14 +219,18 @@ export default function Contact() {
                     <input
                       type={field.type}
                       name={field.name}
+                      value={formData[field.name as keyof typeof formData]}
+                      onChange={handleInputChange}
                       onFocus={() => setFocusedField(field.name)}
                       onBlur={() => setFocusedField(null)}
+                      required
                       className={`w-full bg-white/[0.06] backdrop-blur-xl border rounded-xl px-6 py-3 text-white placeholder-gray-500 font-medium transition-all duration-300 focus:outline-none ${
                         focusedField === field.name
                           ? 'border-[#D4A34A]/50 bg-white/[0.1] shadow-lg shadow-[#D4A34A]/20' 
                           : 'border-white/10 hover:border-white/20'
                       }`}
                       placeholder={field.placeholder}
+                      disabled={isSubmitting}
                     />
                   </div>
                 ))}
@@ -181,7 +239,10 @@ export default function Contact() {
                   <label className="block text-gray-400 mb-3 font-bold text-xs uppercase tracking-wider">Message</label>
                   <textarea
                     name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     rows={4}
+                    required
                     onFocus={() => setFocusedField('message')}
                     onBlur={() => setFocusedField(null)}
                     className={`w-full bg-white/[0.06] backdrop-blur-xl border rounded-xl px-6 py-3 text-white placeholder-gray-500 font-medium transition-all duration-300 focus:outline-none resize-none ${
@@ -190,17 +251,19 @@ export default function Contact() {
                         : 'border-white/10 hover:border-white/20'
                     }`}
                     placeholder="Tell us about your requirements..."
+                    disabled={isSubmitting}
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full group/btn relative bg-gradient-to-r from-[#D4A34A] to-[#f3d382] text-black px-8 py-4 rounded-xl font-black text-sm uppercase tracking-wider overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-[#D4A34A]/50 hover:scale-105"
+                  disabled={isSubmitting}
+                  className="w-full group/btn relative bg-gradient-to-r from-[#D4A34A] to-[#f3d382] text-black px-8 py-4 rounded-xl font-black text-sm uppercase tracking-wider overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-[#D4A34A]/50 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span className="absolute inset-0 bg-white/20 transform -skew-x-12 translate-x-full group-hover/btn:translate-x-0 transition-transform duration-500" />
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     <Send className="h-4 w-4" />
-                    Send Message
+                    {isSubmitting ? 'Mengirim...' : 'Send Message'}
                   </span>
                 </button>
               </form>
