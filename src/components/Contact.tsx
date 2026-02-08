@@ -55,7 +55,7 @@ export default function Contact() {
       );
 
       if (response.status === 200) {
-        alert('✅ Pesan berhasil dikirim! Terima kasih telah menghubungi kami.');
+        alert('Sended! Thankyou for called us.');
         // Reset form
         setFormData({
           name: '',
@@ -66,7 +66,7 @@ export default function Contact() {
       }
     } catch (error) {
       console.error('Email error:', error);
-      alert('❌ Gagal mengirim pesan. Silakan coba lagi.');
+      alert('Failed to Sent. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -88,7 +88,7 @@ export default function Contact() {
     {
       icon: MapPin,
       title: 'Location',
-      items: ['Taman Pulo Indah Blok T1/23A, Penggilingan, Cakung, Jakarta Timur, Desa/Kelurahan Penggilingan, Kec. Cakung, Kota Adm. Jakarta Timur, Provinsi DKI Jakarta, Indonesia. 13940.'],
+      items: ['Taman Pulo Indah Blok T1/23A, Penggilingan, Cakung, Jakarta Timur, DKI Jakarta, Indonesia. 13940.'],
       color: 'from-pink-500/30'
     }
   ];
