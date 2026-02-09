@@ -1,4 +1,4 @@
-import { Award, Globe, Shield, Users, ArrowRight, Check, Building2, Leaf, FlaskConical, MessageCircle } from 'lucide-react';
+import { Award, Globe, Shield, Users, ArrowRight, Check } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 interface AboutFeature {
@@ -23,24 +23,10 @@ export default function About() {
   ];
 
   const certifications = [
-    {
-      category: 'Corporate Legality',
-      icon: Building2,
-      shortTitle: 'Legal & Registered',
-      items: ['NIB (Business ID)', 'PT Incorporation', 'Tax Compliance (e-NPWP)']
-    },
-    {
-      category: 'Operational & Environmental',
-      icon: Leaf,
-      shortTitle: 'Environmental Certified',
-      items: ['Environmental Screening', 'Building Compliance', 'Space Certification']
-    },
-    {
-      category: 'Quality Standards',
-      icon: FlaskConical,
-      shortTitle: 'Quality Assured',
-      items: ['Certificate of Analysis', 'MSDS Certified', 'Self-Heating Test']
-    }
+    { icon: '✓', name: 'Ministry Trade', badge: 'Official' },
+    { icon: '✓', name: 'MSDS Certified', badge: 'Verified' },
+    { icon: '✓', name: '100% Natural', badge: 'Pure' },
+    { icon: '✓', name: 'Tested Quality', badge: 'Guaranteed' }
   ];
 
   return (
@@ -115,7 +101,7 @@ export default function About() {
               </div>
 
               <img
-                src="https://cdn.imgpile.com/f/q2sJUwi_xl.png"
+                src="https://images.pexels.com/photos/414837/pexels-photo-414837.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Charcoal Production"
                 className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
               />
@@ -133,8 +119,8 @@ export default function About() {
             {/* Floating stat card */}
             <div className="absolute -bottom-8 -left-8 bg-gradient-to-br from-[#D4A34A] to-[#f3d382] p-8 rounded-3xl shadow-2xl shadow-[#D4A34A]/40 group-hover:scale-110 transition-all duration-500">
               <div className="text-black">
-                <div className="text-5xl font-black mb-2">100%</div>
-                <div className="text-sm font-bold uppercase tracking-wider">Verified Legality</div>
+                <div className="text-5xl font-black mb-2">10+</div>
+                <div className="text-sm font-bold uppercase tracking-wider">Years of Excellence</div>
               </div>
             </div>
           </div>
@@ -174,88 +160,36 @@ export default function About() {
           })}
         </div>
 
-        {/* Certifications Section - Thumbnail Style */}
+        {/* Certifications Section */}
         <div id="certificates" className={`transform transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-16">
             <h3 className="text-4xl md:text-5xl font-black text-white">
               Standards & <span className="text-transparent bg-gradient-to-r from-[#D4A34A] to-[#f3d382] bg-clip-text animate-shine">Certifications</span>
             </h3>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">All documentation available upon request</p>
+            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">Backed by rigorous testing and quality assurance</p>
           </div>
 
-          {/* Certification Thumbnails Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {certifications.map((cert, idx) => {
-              const Icon = cert.icon;
-              return (
-                <div
-                  key={idx}
-                  className={`group transform transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                  style={{ transitionDelay: `${idx * 100 + 500}ms` }}
-                >
-                  <div className="relative bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/10 rounded-xl p-6 text-center overflow-hidden group-hover:border-[#D4A34A]/40 group-hover:from-white/[0.12] transition-all duration-500 h-full cursor-pointer">
-                    {/* Animated background on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#D4A34A]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-                    
-                    <div className="relative z-10">
-                      <div className="mb-3 flex justify-center">
-                        <div className="p-2 bg-[#D4A34A]/20 rounded-lg group-hover:bg-[#D4A34A]/30 transition-all duration-300 group-hover:scale-110">
-                          <Icon className="h-6 w-6 text-[#D4A34A]" />
-                        </div>
-                      </div>
-                      
-                      <h4 className="text-white font-bold text-sm mb-1 group-hover:text-[#D4A34A] transition-colors duration-300">
-                        {cert.shortTitle}
-                      </h4>
-                      
-                      <p className="text-gray-500 text-xs mb-3 font-medium">
-                        {cert.category}
-                      </p>
-
-                      <div className="space-y-1 mb-4 text-left">
-                        {cert.items.map((item, itemIdx) => (
-                          <div key={itemIdx} className="flex items-start gap-2 text-xs text-gray-400 group-hover:text-gray-300 transition-colors">
-                            <span className="text-[#D4A34A] font-bold mt-0.5">•</span>
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      <div className="text-xs text-gray-500 italic">
-                        Full details on request
-                      </div>
-                    </div>
-                  </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {certifications.map((cert, idx) => (
+              <div
+                key={idx}
+                className={`group transform transition-all duration-700 hover:scale-110 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${idx * 100 + 500}ms` }}
+              >
+                <div className="relative bg-gradient-to-br from-white/10 to-white/[0.02] border border-white/10 rounded-2xl p-8 text-center overflow-hidden group-hover:border-[#D4A34A]/40 group-hover:from-white/[0.12] transition-all duration-500">
+                  {/* Animated background on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#D4A34A]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+                  
+                  <div className="mb-4 text-4xl font-black text-[#D4A34A]">{cert.icon}</div>
+                  <h4 className="text-white font-bold mb-2 group-hover:text-[#D4A34A] transition-colors duration-300">
+                    {cert.name}
+                  </h4>
+                  <span className="inline-block px-3 py-1 bg-[#D4A34A]/20 text-[#D4A34A] text-xs font-bold uppercase rounded-full">
+                    {cert.badge}
+                  </span>
                 </div>
-              );
-            })}
-          </div>
-
-          {/* CTA Section for WhatsApp */}
-          <div className={`transform transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="bg-gradient-to-r from-white/[0.08] via-white/[0.05] to-white/[0.08] backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-12 text-center overflow-hidden relative group hover:border-[#D4A34A]/30 transition-all duration-500">
-              {/* Animated background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#D4A34A]/10 via-transparent to-[#D4A34A]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              <div className="relative z-10">
-                <h4 className="text-2xl md:text-3xl font-black text-white mb-3">
-                  Need Full Documentation?
-                </h4>
-                <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-                  Contact us directly via WhatsApp to receive complete copies of all certifications, compliance documents, and quality assurance reports.
-                </p>
-                
-                <a
-                  href="https://wa.me/6285921783137"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group/btn inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#25D366] to-[#20BA5A] text-white rounded-xl font-bold uppercase tracking-wider hover:shadow-xl hover:shadow-[#25D366]/40 transition-all hover:scale-105"
-                >
-                  <MessageCircle className="h-5 w-5" />
-                  Request Documentation
-                </a>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

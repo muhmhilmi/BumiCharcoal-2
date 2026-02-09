@@ -88,10 +88,11 @@ export default function Products() {
       ],
       sectors: ['Luxury Lounges', 'Premium Retail', 'Global Distribution'],
       metrics: [
-        { label: 'Fixed Carbon', value: '> 85%', description: 'Maximum efficiency', icon: Zap },
-        { label: 'Ash Content', value: '< 3%', description: 'Pure white residue', icon: Wind },
+        { label: 'Ash Content', value: '< 2.5%', description: 'Pure white residue', icon: Wind },
         { label: 'Moisture', value: '< 5%', description: 'Optimal ignition', icon: Droplets },
-        { label: 'Duration', value: '120 min', description: 'Extended sessions', icon: Clock }
+        { label: 'Fixed Carbon', value: '> 82%', description: 'Maximum efficiency', icon: Zap },
+        { label: 'Burning Time', value: '150 min', description: 'Extended sessions', icon: Clock },
+        { label: 'Caloric Value', value: '7500', description: 'Kcal/kg energy', icon: Flame }
       ],
       certification: 'Laboratory Tested | Proven Quality',
       advantages: [
@@ -119,10 +120,11 @@ export default function Products() {
       ],
       sectors: ['Steakhouses', 'Commercial Catering', 'Bulk Supply'],
       metrics: [
-        { label: 'Fixed Carbon', value: '> 80%', description: 'Steady heat release', icon: Zap },
-        { label: 'Ash Content', value: '< 4.5%', description: 'Easy cleanup', icon: Wind },
-        { label: 'Moisture', value: '< 6%', description: 'Quick heat-up', icon: Droplets },
-        { label: 'Caloric Value', value: '7500', description: 'Kcal/kg power', icon: Flame }
+        { label: 'Ash Content', value: '< 5.5%', description: 'Easy cleanup', icon: Wind },
+        { label: 'Moisture', value: '< 5%', description: 'Quick heat-up', icon: Droplets },
+        { label: 'Fixed Carbon', value: '> 70%', description: 'Steady heat release', icon: Zap },
+        { label: 'Burning Time', value: '360 min', description: 'Sustained performance', icon: Clock },
+        { label: 'Caloric Value', value: '7300', description: 'Kcal/kg power', icon: Flame }
       ],
       certification: 'Heavy Duty Grade | Performance Tested',
       advantages: [
