@@ -179,7 +179,7 @@ export default function ShippingPartners() {
 
               {/* Countries Grid */}
               <div>
-                <p className="text-xs text-gray-400 font-black uppercase tracking-wider mb-6">Currently Shipping To</p>
+                <p className="text-xs text-gray-400 font-black uppercase tracking-wider mb-6">Primary Destination Focus</p>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
                   {countries.map((country, idx) => (
                     <div

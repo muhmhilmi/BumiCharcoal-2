@@ -17,7 +17,7 @@ export default function About() {
 
   const features: AboutFeature[] = [
     { icon: Award, title: 'Excellence', desc: 'Premium quality standards' },
-    { icon: Globe, title: 'Global', desc: 'Trusted in 50+ countries' },
+    { icon: Globe, title: 'Global', desc: 'Built for international charcoal trade' },
     { icon: Shield, title: 'Reliable', desc: 'Proven track record' },
     { icon: Users, title: 'Expert', desc: 'Professional team' }
   ];
