@@ -40,7 +40,7 @@ const processSteps = [
   {
     icon: CheckCircle,
     title: 'Global Distribution',
-    description: 'Optimal storage conditions and trusted logistics partners. Shipping to 50+ countries worldwide.',
+    description: 'By leveraging our integrated supply chain and world-class logistics partnerships, we ensure every shipment of premium charcoal is handled with precision.',
     image: 'https://d9qdiq7a7hdin.cloudfront.net/public/hub/post_image/shipping-process-artinya-arahin.id.jpg',
     color: 'from-green-500/20'
   }

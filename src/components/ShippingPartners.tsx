@@ -60,7 +60,7 @@ const coreValues = [
     desc: 'Quality Control'
   },
   { 
-    label: 'Sourcing', 
+    label: 'Environmental Certified', 
     value: 'Sustainable', 
     icon: Leaf,
     desc: 'Eco-Friendly'
