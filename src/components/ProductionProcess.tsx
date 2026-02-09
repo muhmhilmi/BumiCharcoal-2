@@ -76,7 +76,7 @@ export default function ProductionProcess() {
               Our <span className="text-transparent bg-gradient-to-r from-[#D4A34A] to-[#f3d382] bg-clip-text animate-shine">Production Process</span>
             </h2>
             <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-              Six meticulously engineered steps ensuring premium quality charcoal from raw material to your doorstep
+              At Bumi Charcoal, we maintain stringent quality standards throughout our six-step production process. From carefully selecting premium coconut shell raw materials to final packaging and global distribution, each phase is meticulously engineered to ensure consistent excellence. Our production facilities meet international environmental and safety standards, utilizing advanced carbonization technology and rigorous quality testing to deliver charcoal products that exceed customer expectations in every market we serve.
             </p>
           </div>
         </div>

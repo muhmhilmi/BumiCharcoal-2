@@ -1,239 +1,360 @@
-import { Ship, Globe, Zap, TrendingUp, ArrowRight, MapPin } from 'lucide-react';
+import { 
+  Ship, 
+  Globe, 
+  Wind, 
+  Anchor, 
+  TrendingUp, 
+  ArrowRight, 
+  MapPin, 
+  Clock, 
+  ShieldCheck, 
+  FileCheck,
+  Leaf
+} from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-const partners = [
-  { name: 'PIL', region: 'Asia-Pacific' },
-  { name: 'MSC', region: 'Global' },
-  { name: 'CMA CGM', region: 'Global' },
-  { name: 'ESL', region: 'Middle East' },
-  { name: 'ASYAD', region: 'Middle East' },
-  { name: 'ONE', region: 'Asia-Pacific' },
-  { name: 'SITC', region: 'Asia-Europe' }
+// --- DATA CONFIGURATION ---
+
+const shippingCapabilities = [
+  { 
+    icon: Globe, 
+    title: 'Export Ready', 
+    description: 'Fully licensed and compliant with international trade regulations for smooth customs clearance.',
+    color: 'from-blue-500/20',
+    border: 'group-hover:border-blue-500/50'
+  },
+  { 
+    icon: Ship, 
+    title: 'Freight Solutions', 
+    description: 'Partnering with trusted freight forwarders to ensure your cargo arrives safely and on schedule.',
+    color: 'from-cyan-500/20',
+    border: 'group-hover:border-cyan-500/50'
+  },
+  { 
+    icon: Leaf, 
+    title: 'Eco Packaging', 
+    description: 'Secure and sustainable packaging standards to maintain briquette quality during transit.',
+    color: 'from-teal-500/20',
+    border: 'group-hover:border-teal-500/50'
+  },
+  { 
+    icon: Anchor, 
+    title: 'Port Access', 
+    description: 'Strategically located near major Indonesian ports for efficient container loading.',
+    color: 'from-green-500/20',
+    border: 'group-hover:border-green-500/50'
+  }
 ];
 
-// 1. Update data dengan ISO Code untuk memanggil SVG Flag yang lebih tajam
-const countries = [
-  { name: 'UAE', code: 'ae', region: 'Middle East' },
-  { name: 'Saudi Arabia', code: 'sa', region: 'Middle East' },
-  { name: 'Qatar', code: 'qa', region: 'Middle East' },
-  { name: 'Egypt', code: 'eg', region: 'North Africa' },
-  { name: 'Turkey', code: 'tr', region: 'Eurasia' },
-  { name: 'India', code: 'in', region: 'South Asia' },
-  { name: 'Singapore', code: 'sg', region: 'Southeast Asia' },
-  { name: 'Malaysia', code: 'my', region: 'Southeast Asia' },
-  { name: 'China', code: 'cn', region: 'East Asia' },
-  { name: 'Japan', code: 'jp', region: 'East Asia' },
-  { name: 'South Korea', code: 'kr', region: 'East Asia' }
+const coreValues = [
+  { 
+    label: 'Legal Compliance', 
+    value: '100%', 
+    icon: FileCheck,
+    desc: 'Export Documents'
+  },
+  { 
+    label: 'Product Quality', 
+    value: 'Premium', 
+    icon: ShieldCheck,
+    desc: 'Quality Control'
+  },
+  { 
+    label: 'Sourcing', 
+    value: 'Sustainable', 
+    icon: Leaf,
+    desc: 'Eco-Friendly'
+  },
+  { 
+    label: 'Support', 
+    value: '24/7', 
+    icon: Clock,
+    desc: 'Responsive Team'
+  },
 ];
 
-// 2. Component Grid yang lebih "Tinggi" & Premium
-<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-  {countries.map((country, idx) => (
-    <div
-      key={idx}
-      className="group relative flex flex-col items-center justify-between p-8 bg-zinc-900/40 border border-zinc-800 rounded-2xl hover:border-amber-500/50 hover:bg-zinc-800/40 transition-all duration-500 cursor-default overflow-hidden"
-    >
-      {/* Background Glow Effect */}
-      <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-amber-500/5 blur-[50px] group-hover:bg-amber-500/10 transition-all duration-500" />
+// DATA UPDATE: Deskripsi dibuat fleksibel (Tergantung Request Buyer)
+const targetRegions = [
+  { 
+    region: 'Middle East', 
+    coordinate: 'Target Market',
+    countries: [
+      { name: 'UAE', code: 'ae' },
+      { name: 'Saudi Arabia', code: 'sa' },
+      { name: 'Qatar', code: 'qa' },
+      { name: 'Kuwait', code: 'kw' }
+    ],
+    // Dibuat umum: Siap supply berbagai grade sesuai spek pembeli
+    description: 'Ready to supply various charcoal grades tailored to your specific market requirements.',
+    color: 'from-orange-500/20',
+    accent: 'text-orange-400'
+  },
+  { 
+    region: 'Southeast Asia', 
+    coordinate: 'Regional Hub',
+    countries: [
+      { name: 'Singapore', code: 'sg' },
+      { name: 'Malaysia', code: 'my' },
+      { name: 'Thailand', code: 'th' },
+      { name: 'Vietnam', code: 'vn' }
+    ],
+    // Dibuat umum: Fokus ke kemudahan distribusi
+    description: 'Fast distribution network supporting both commercial and industrial orders.',
+    color: 'from-blue-500/20',
+    accent: 'text-blue-400'
+  },
+  { 
+    region: 'East Asia', 
+    coordinate: 'High Potential',
+    countries: [
+      { name: 'China', code: 'cn' },
+      { name: 'Japan', code: 'jp' },
+      { name: 'South Korea', code: 'kr' }
+    ],
+    // Dibuat umum: Fokus ke standar kualitas, bukan jenis arang tertentu
+    description: 'Meeting strict quality standards for diverse applications and product types.',
+    color: 'from-purple-500/20',
+    accent: 'text-purple-400'
+  },
+  { 
+    region: 'South Asia', 
+    coordinate: 'Emerging Market',
+    countries: [
+      { name: 'India', code: 'in' },
+      { name: 'Pakistan', code: 'pk' },
+      { name: 'Bangladesh', code: 'bd' }
+    ],
+    // Dibuat umum: Bisa supply skala besar untuk apa saja
+    description: 'Scalable supply solutions for bulk orders across all charcoal categories.',
+    color: 'from-pink-500/20',
+    accent: 'text-pink-400'
+  }
+];
 
-      {/* Flag Container - Ditinggikan dengan aspek rasio yang pas */}
-      <div className="mb-6 relative">
-        <div className="w-16 h-12 overflow-hidden rounded shadow-lg border border-zinc-700/50 group-hover:scale-110 group-hover:rotate-2 transition-transform duration-500">
-          <img 
-            src={`https://flagcdn.com/${country.code}.svg`} 
-            alt={country.name}
-            className="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all"
-          />
-        </div>
-        {/* Status Indicator */}
-        <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 border-2 border-zinc-900 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
-      </div>
-
-      {/* Text Info */}
-      <div className="text-center">
-        <h4 className="text-white font-bold text-sm tracking-[0.1em] uppercase mb-1 group-hover:text-amber-500 transition-colors">
-          {country.name}
-        </h4>
-        <p className="text-[10px] text-zinc-500 font-medium uppercase tracking-widest">
-          {country.region}
-        </p>
-      </div>
-
-      {/* Hover Line Decoration */}
-      <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500 to-transparent group-hover:w-full transition-all duration-700" />
-    </div>
-  ))}
-</div>
 export default function ShippingPartners() {
   const [isVisible, setIsVisible] = useState(false);
-  const [hoveredPartner, setHoveredPartner] = useState<number | null>(null);
+  const [hoveredCapability, setHoveredCapability] = useState<number | null>(null);
 
   useEffect(() => {
-    setIsVisible(true);
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <section id="shipping" className="py-32 bg-gradient-to-b from-black to-[#0a0a0a] relative overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-[#D4A34A]/15 to-transparent rounded-full blur-3xl opacity-20 animate-blob" style={{ animationDelay: '0s' }} />
-        <div className="absolute bottom-0 left-0 w-[700px] h-[700px] bg-gradient-to-tr from-[#D4A34A]/10 to-transparent rounded-full blur-3xl opacity-15 animate-blob" style={{ animationDelay: '3s' }} />
+    <section 
+      id="shipping" 
+      className="py-32 bg-[#050505] relative overflow-hidden"
+    >
+      {/* --- BACKGROUND FX --- */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div 
+          className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-[#D4A34A]/10 to-transparent rounded-full blur-[100px] opacity-20 animate-blob" 
+        />
+        <div 
+          className="absolute bottom-0 left-0 w-[900px] h-[900px] bg-gradient-to-tr from-[#D4A34A]/5 to-transparent rounded-full blur-[120px] opacity-10 animate-blob" 
+          style={{ animationDelay: '3s' }} 
+        />
       </div>
 
+      <div 
+        className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light pointer-events-none"
+      ></div>
+      
+      <div 
+        className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"
+      ></div>
+
+      {/* --- CONTENT CONTAINER --- */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header */}
-        <div className="text-center mb-24">
-          <div className={`transform transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-            <div className="inline-flex items-center gap-2 bg-[#D4A34A]/10 border border-[#D4A34A]/30 rounded-full px-6 py-3 mb-8 backdrop-blur-sm">
-              <span className="w-2 h-2 bg-[#D4A34A] rounded-full animate-pulse" />
-              <span className="text-[#D4A34A] font-bold text-sm uppercase tracking-wider">Global Network</span>
+        {/* HEADER SECTION */}
+        <div className="text-center mb-20">
+          <div className={`transform transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            
+            <div className="inline-flex items-center gap-3 bg-[#D4A34A]/5 border border-[#D4A34A]/20 rounded-full px-5 py-2 mb-8 backdrop-blur-md hover:bg-[#D4A34A]/10 transition-colors cursor-default">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4A34A] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D4A34A]"></span>
+              </span>
+              <span className="text-[#D4A34A] font-bold text-xs uppercase tracking-[0.2em]">Open For Partnership</span>
             </div>
             
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">
-              Shipping <span className="text-transparent bg-gradient-to-r from-[#D4A34A] to-[#f3d382] bg-clip-text animate-shine">Partners</span>
+            <h2 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight leading-tight">
+              Ready to <br className="hidden md:block" />
+              <span className="relative inline-block">
+                <span className="relative z-10 text-transparent bg-gradient-to-r from-[#D4A34A] via-[#F3D382] to-[#D4A34A] bg-clip-text bg-[length:200%_auto] animate-shine">
+                  Ship Globally
+                </span>
+                <div className="absolute -bottom-2 left-0 w-full h-1 bg-[#D4A34A]/20 blur-sm"></div>
+              </span>
             </h2>
-            <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-              Partnering with world-class logistics providers to deliver excellence across the globe
+
+            <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
+              We are committed to delivering premium Indonesian charcoal to your destination. 
+              Safe handling, transparent pricing, and trusted logistics partners.
             </p>
           </div>
         </div>
 
-        {/* Partners Grid */}
-        <div className={`grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 md:gap-6 mb-24 transform transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          {partners.map((partner, index) => (
-            <div
-              key={index}
-              className={`transform transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: `${index * 60}ms` }}
-              onMouseEnter={() => setHoveredPartner(index)}
-              onMouseLeave={() => setHoveredPartner(null)}
-            >
-              <div className="relative group h-full bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:border-[#D4A34A]/40 hover:shadow-2xl hover:shadow-[#D4A34A]/20 hover:scale-110 overflow-hidden backdrop-blur-xl">
-                {/* Animated background on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#D4A34A]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-                
-                <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
-                  <div className="mb-4 transform transition-all duration-300 group-hover:scale-125 group-hover:rotate-12">
-                    <Ship className="h-8 w-8 md:h-10 md:w-10 text-[#D4A34A] mx-auto group-hover:text-white transition-colors duration-300" />
-                  </div>
-                  <div className="text-white font-black text-sm md:text-base mb-2 group-hover:text-[#D4A34A] transition-colors duration-300">
-                    {partner.name}
-                  </div>
-                  <p className="text-[10px] md:text-xs text-gray-500 group-hover:text-gray-400 transition-colors duration-300 font-bold uppercase tracking-wider">
-                    {partner.region}
-                  </p>
-                </div>
-
-                {/* Border glow */}
-                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background: `linear-gradient(135deg, transparent 0%, rgba(212, 163, 74, 0.1) 50%, transparent 100%)`,
-                  }}
-                />
+        {/* CORE VALUES */}
+        <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-24 border-y border-white/5 py-8 bg-white/[0.02] backdrop-blur-sm transform transition-all duration-1000 delay-150 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          {coreValues.map((stat, idx) => (
+            <div key={idx} className="text-center group hover:bg-white/5 p-4 rounded-xl transition-colors cursor-default">
+              <div className="flex justify-center mb-3">
+                <stat.icon className="w-6 h-6 text-[#D4A34A] opacity-80 group-hover:scale-110 transition-transform" />
               </div>
+              <div className="text-2xl md:text-3xl font-black text-white mb-1">{stat.value}</div>
+              <div className="text-xs text-[#D4A34A] font-bold uppercase mb-1">{stat.label}</div>
+              <div className="text-[10px] text-gray-500 uppercase tracking-widest">{stat.desc}</div>
             </div>
           ))}
         </div>
 
-        {/* Main Stats Card */}
-        <div className={`transform transition-all duration-1000 delay-300 mb-24 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          <div className="relative group bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 hover:border-[#D4A34A]/40 hover:shadow-2xl hover:shadow-[#D4A34A]/20 backdrop-blur-xl p-12 md:p-16">
-            
-            {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#D4A34A]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
-            
-            <div className="relative z-10">
-              <div className="text-center mb-12">
-                <h3 className="text-4xl md:text-5xl font-black text-white mb-4 group-hover:text-[#D4A34A] transition-colors duration-300">
-                  Global Reach <span className="text-[#D4A34A] group-hover:text-white transition-colors duration-300">20+ Countries</span>
-                </h3>
-                <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto">
-                  From Asia to Europe, Middle East to Africa, our world-class logistics network ensures your orders arrive fresh, on time, and in perfect condition.
-                </p>
-              </div>
-
-              {/* Stats Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 py-12 border-y border-white/10">
-                {[
-                  { icon: Globe, label: 'Worldwide Export Ready', value: '20+' },
-                  { icon: Ship, label: 'Integrated Production Hub', value: '7' },
-                  { icon: TrendingUp, label: 'Monthly Production Capacity', value: '1000+' }
-                ].map((stat, idx) => {
-                  const Icon = stat.icon;
-                  return (
-                    <div key={idx} className="text-center group/stat">
-                      <div className="flex justify-center mb-4">
-                        <div className="w-14 h-14 rounded-xl bg-[#D4A34A]/20 flex items-center justify-center group-hover/stat:bg-[#D4A34A]/40 group-hover/stat:scale-125 transition-all duration-300">
-                          <Icon className="h-7 w-7 text-[#D4A34A]" />
-                        </div>
-                      </div>
-                      <p className="text-3xl font-black text-white mb-2 group-hover/stat:text-[#D4A34A] transition-colors duration-300">{stat.value}</p>
-                      <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">{stat.label}</p>
+        {/* CAPABILITIES GRID */}
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-32 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+          {shippingCapabilities.map((capability, idx) => {
+            const Icon = capability.icon;
+            return (
+              <div
+                key={idx}
+                className="transform transition-all duration-700 hover:-translate-y-2"
+                style={{ transitionDelay: `${idx * 100}ms` }}
+                onMouseEnter={() => setHoveredCapability(idx)}
+                onMouseLeave={() => setHoveredCapability(null)}
+              >
+                <div className={`group relative h-full bg-[#0A0A0A] border border-white/10 rounded-3xl p-8 transition-all duration-500 overflow-hidden ${
+                  hoveredCapability === idx ? 'border-[#D4A34A]/50 shadow-2xl shadow-[#D4A34A]/10' : ''
+                }`}>
+                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-b ${capability.color} to-transparent pointer-events-none`} />
+                  
+                  <div className="relative mb-6">
+                    <div className="w-14 h-14 rounded-2xl bg-[#1A1A1A] border border-white/5 flex items-center justify-center group-hover:bg-[#D4A34A] group-hover:border-[#D4A34A] transition-all duration-300">
+                      <Icon className={`w-6 h-6 transition-colors duration-300 ${hoveredCapability === idx ? 'text-black' : 'text-[#D4A34A]'}`} />
                     </div>
-                  );
-                })}
-              </div>
-
-              {/* Countries Grid */}
-              <div>
-                <p className="text-xs text-gray-400 font-black uppercase tracking-wider mb-6">Primary Destination Focus</p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-                  {countries.map((country, idx) => (
-                    <div
-                      key={idx}
-                      className={`group/country transform transition-all duration-700 ${
-                        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                      }`}
-                      style={{ transitionDelay: `${400 + idx * 30}ms` }}
-                    >
-                      <div className="relative bg-gradient-to-br from-white/[0.06] to-white/[0.02] border border-white/10 rounded-xl p-4 text-center hover:border-[#D4A34A]/40 hover:bg-white/[0.1] transition-all duration-300 hover:scale-110 overflow-hidden cursor-pointer">
-                        <p className="text-2xl mb-2 group-hover/country:scale-125 transition-transform duration-300">{country.code.toUpperCase()}</p>
-                          <p className="text-xs font-bold text-gray-400 group-hover/country:text-[#D4A34A] transition-colors duration-300 uppercase tracking-wider">
-                          {country.name}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                  </div>
+                  
+                  <h3 className="relative text-xl font-bold text-white mb-3 group-hover:text-[#D4A34A] transition-colors">
+                    {capability.title}
+                  </h3>
+                  <p className="relative text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4 mt-4">
+                    {capability.description}
+                  </p>
                 </div>
               </div>
+            );
+          })}
+        </div>
+
+        {/* TARGET MARKETS */}
+        <div className={`relative transform transition-all duration-1000 delay-300 mb-24 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+          
+          <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
+            <div>
+              <h3 className="text-4xl md:text-5xl font-black text-white mb-4">
+                Target <span className="text-[#D4A34A]">Markets</span>
+              </h3>
+              <p className="text-gray-400 max-w-md">
+                Our team is ready to facilitate shipments to these key regions.
+              </p>
             </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {targetRegions.map((region, idx) => (
+              <div 
+                key={idx}
+                className="group relative bg-[#080808] border border-white/10 rounded-[2rem] p-8 overflow-hidden hover:border-[#D4A34A]/40 transition-all duration-500"
+              >
+                <div className="absolute top-0 right-0 p-6 opacity-30">
+                  <Globe className={`w-12 h-12 ${region.accent} opacity-20 group-hover:rotate-12 transition-transform duration-700`} />
+                </div>
+
+                <div className="relative z-10">
+                  <div className="flex items-start justify-between mb-8">
+                    <div>
+                      <div className="text-[10px] font-mono text-gray-500 mb-2 flex items-center gap-2 uppercase tracking-wider">
+                        <MapPin className="w-3 h-3" />
+                        {region.coordinate}
+                      </div>
+                      <h4 className={`text-2xl font-black text-white group-hover:${region.accent} transition-colors duration-300`}>
+                        {region.region}
+                      </h4>
+                    </div>
+                  </div>
+
+                  {/* Countries Grid - Updated with Real Flag Images from FlagCDN */}
+                  <div className="grid grid-cols-2 gap-3 mb-6">
+                    {region.countries.map((country, cidx) => (
+                      <div 
+                        key={cidx}
+                        className="flex items-center gap-3 px-4 py-3 bg-white/[0.03] border border-white/[0.05] rounded-xl hover:bg-[#D4A34A]/10 hover:border-[#D4A34A]/30 transition-all duration-300 group/country"
+                      >
+                        {/* Container Bendera */}
+                        <div className="relative w-8 h-6 rounded overflow-hidden shadow-sm group-hover/country:scale-110 transition-transform flex-shrink-0">
+                           <img 
+                              src={`https://flagcdn.com/${country.code}.svg`} 
+                              alt={`${country.name} flag`}
+                              className="w-full h-full object-cover"
+                           />
+                        </div>
+                        <span className="text-gray-300 font-bold text-xs tracking-wide group-hover/country:text-[#D4A34A] transition-colors">
+                          {country.name}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="pt-6 border-t border-white/5">
+                    <p className="text-sm text-gray-500 group-hover:text-gray-400 transition-colors">
+                      {region.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className={`absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r ${region.color} to-transparent opacity-50 group-hover:opacity-100 transition-opacity`} />
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className={`transform transition-all duration-1000 delay-500 text-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
-            Ready to expand your reach to international markets? Our logistics expertise is here to support your growth.
+        {/* CTA SECTION */}
+        <div className={`transform transition-all duration-1000 delay-500 text-center pb-20 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+          <div className="inline-block relative group cursor-pointer">
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#D4A34A] to-[#f3d382] rounded-2xl blur opacity-20 group-hover:opacity-60 transition duration-500"></div>
+            
+            <a 
+              href="#contact" 
+              className="relative flex items-center gap-4 px-12 py-6 bg-[#0F0F0F] border border-[#D4A34A]/30 text-white rounded-2xl font-bold uppercase tracking-widest transition-all hover:bg-[#151515] overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-[#D4A34A]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              <TrendingUp className="w-5 h-5 text-[#D4A34A]" />
+              <span>Contact Our Team</span>
+              <ArrowRight className="w-5 h-5 text-[#D4A34A] group-hover:translate-x-1 transition-transform" />
+            </a>
+          </div>
+          
+          <p className="mt-8 text-gray-600 text-sm">
+            Discuss your requirements and get a transparent quote.
           </p>
-          <a href="#contact" className="group inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-[#D4A34A] to-[#f3d382] text-black rounded-xl font-bold uppercase tracking-wider transition-all hover:shadow-2xl hover:shadow-[#D4A34A]/50 hover:scale-110">
-            Start Shipping Today
-            <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
-          </a>
         </div>
+
       </div>
 
       <style>{`
         @keyframes blob {
           0%, 100% { transform: translate(0, 0) scale(1); }
-          25% { transform: translate(20px, -50px) scale(1.1); }
-          50% { transform: translate(-20px, 20px) scale(0.9); }
-          75% { transform: translate(50px, 50px) scale(1.05); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
         }
-
         @keyframes shine {
-          0%, 100% { background-position: 200% center; }
-          50% { background-position: -200% center; }
+          0% { background-position: 200% center; }
+          100% { background-position: -200% center; }
         }
-
         .animate-blob {
-          animation: blob 7s infinite;
+          animation: blob 10s infinite alternate;
         }
-
         .animate-shine {
-          background-size: 200% auto;
           animation: shine 4s linear infinite;
         }
       `}</style>

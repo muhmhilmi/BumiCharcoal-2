@@ -165,7 +165,7 @@ export default function Products() {
               Our <span className="text-transparent bg-gradient-to-r from-[#D4A34A] to-[#f3d382] bg-clip-text animate-shine">Signature Collection</span>
             </h2>
             <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-              Engineered excellence meets timeless quality. Two product lines, infinite possibilities.
+              Bumi Charcoal offers two premium product lines engineered for excellence: shisha briquettes for high-end lounges and BBQ charcoal for professional kitchens. Both products are manufactured from 100% coconut shell, sustainably sourced and internationally certified. Each variant is optimized for specific applications with superior performance characteristics, consistent quality, and reliable supply chains.
             </p>
           </div>
         </div>

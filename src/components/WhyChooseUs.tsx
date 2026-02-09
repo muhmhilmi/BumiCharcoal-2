@@ -87,7 +87,7 @@ export default function WhyChooseUs() {
               Why <span className="text-transparent bg-gradient-to-r from-[#D4A34A] to-[#f3d382] bg-clip-text animate-shine">Bumi Charcoal</span> Stands Out
             </h2>
             <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-              Eight compelling reasons why industry leaders trust us for premium charcoal solutions
+              Discover eight compelling reasons why industry leaders trust us for premium charcoal solutions. Our commitment to quality, sustainability, and customer satisfaction sets us apart in the global charcoal market. From eco-friendly sourcing to rigorous quality control, we ensure every product meets the highest international standards.
             </p>
           </div>
         </div>

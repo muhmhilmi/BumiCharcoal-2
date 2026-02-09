@@ -125,8 +125,8 @@ export default function Contact() {
             <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter">
               Get In <span className="text-transparent bg-gradient-to-r from-[#D4A34A] to-[#f3d382] bg-clip-text animate-shine">Touch</span>
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-              Ready to partner with us? Our team is standing by to help you find the perfect charcoal solution
+            <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
+              Ready to partner with Bumi Charcoal? Our dedicated team is standing by to help you find the perfect charcoal solution for your business needs. Whether you're a buyer, distributor, or logistics partner, we're here to provide expert guidance, competitive pricing, and reliable service. Contact us today via phone, email, or WhatsApp to discuss your charcoal requirements and explore partnership opportunities.
             </p>
           </div>
         </div>
@@ -134,6 +134,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           {/* Left - Contact Info Cards */}
           <div className={`transform transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            <h3 className="text-2xl font-black text-white mb-6">Contact Information</h3>
             <div className="space-y-6">
               {contactInfo.map((info, index) => {
                 const Icon = info.icon;
