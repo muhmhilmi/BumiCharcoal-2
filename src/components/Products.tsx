@@ -78,8 +78,8 @@ export default function Products() {
   const productData: ProductProfile[] = useMemo(() => [
     {
       id: 'shisha',
-      category: 'Grade AA+ Premium',
-      name: 'Platinum Shisha',
+      category: 'Premium Grade',
+      name: 'Shisha Briquettes',
       tagline: 'Pure Excellence for Premium Markets',
       image: 'https://baracoco.com/wp-content/uploads/2022/11/mcbrikett-kokoko-coconut-charcoal-cubes-2kg-11859-p.jpg',
       abstract: 'Engineered for high-end shisha markets. 100% aged coconut shells ensure odorless, smokeless experience that preserves flavor integrity.',
@@ -110,9 +110,9 @@ export default function Products() {
     {
       id: 'bbq',
       category: 'Industrial Grade',
-      name: 'Hexagonal BBQ',
+      name: 'BBQ Briquettes',
       tagline: 'Maximum Heat for Professional Grilling',
-      image: 'https://img.lazcdn.com/g/p/0a80be1da5a484da6287d53232e28e83.jpg_720x720q80.jpg',
+      image: 'https://aboc.co.uk/cdn/shop/products/sawdust-briquettes-alight_grande.jpg?v=1726220080',
       abstract: 'Designed for commercial kitchens. Superior heat retention and steady burning profile for heavy-duty professional grilling demands.',
       valuePropositions: [
         'Heat Density', 'Temperature Control', 'Low Impurities', 'Sustainable'
