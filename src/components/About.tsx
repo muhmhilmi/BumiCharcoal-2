@@ -101,7 +101,7 @@ export default function About() {
               </div>
 
               <img
-                src="https://images.pexels.com/photos/414837/pexels-photo-414837.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="https://cdn.imgpile.com/f/7LnBbFH_xl.png"
                 alt="Charcoal Production"
                 className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
               />
@@ -119,8 +119,8 @@ export default function About() {
             {/* Floating stat card */}
             <div className="absolute -bottom-8 -left-8 bg-gradient-to-br from-[#D4A34A] to-[#f3d382] p-8 rounded-3xl shadow-2xl shadow-[#D4A34A]/40 group-hover:scale-110 transition-all duration-500">
               <div className="text-black">
-                <div className="text-5xl font-black mb-2">10+</div>
-                <div className="text-sm font-bold uppercase tracking-wider">Years of Excellence</div>
+                <div className="text-5xl font-black mb-2">100%</div>
+                <div className="text-sm font-bold uppercase tracking-wider">Verified Legality</div>
               </div>
             </div>
           </div>
